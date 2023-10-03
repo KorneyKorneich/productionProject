@@ -5,21 +5,16 @@ import {classNames} from "app/shared/lib/classNames";
 import {useTheme} from "app/provider/ThemeProvider";
 import {AboutPage} from "pages/AboutPage";
 import {MainPage} from "pages/MainPage";
+import AppRouter from "app/provider/router";
+import {Navbar} from "widgets/Navbar";
 const App = () => {
 
-    const {theme, handleTheme} = useTheme();
+    const {theme} = useTheme();
 
     return (
-        <div className={classNames('app', {hovered:true, red: false}, [theme, "main"])}>
-            <button onClick={handleTheme}>Change</button>
-            <Link to={'/'}>Main</Link>
-            <Link to={'/about'}>About</Link>
-            <Suspense fallback={<div>...Loading...</div>}>
-                <Routes>
-                    <Route path={'/about'} element={<AboutPage/>}/>
-                    <Route path={'/'} element={<MainPage/>}/>
-                </Routes>
-            </Suspense>
+        <div className={classNames('app', {}, [theme, "main"])}>
+            <Navbar />
+            <AppRouter />
         </div>
     );
 };
