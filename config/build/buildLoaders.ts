@@ -18,6 +18,24 @@ export function buildLoaders (options: BuildConfig): webpack.RuleSetRule[] {
         use: ['@svgr/webpack']
     }
 
+    const babelLoader = {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    ['i18next-extract',
+                        {
+                            locales: ['en', 'ru']
+                        }
+                    ]
+                ]
+            }
+        }
+    }
+
     const sassLoaders = {
 
         test: /\.s[ac]ss$/i,
@@ -46,6 +64,7 @@ export function buildLoaders (options: BuildConfig): webpack.RuleSetRule[] {
         exclude: /node_modules/
     }
     return [
+        babelLoader,
         typescriptLoaders,
         sassLoaders,
         svgLoader,
