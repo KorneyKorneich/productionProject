@@ -6,7 +6,7 @@ interface BugButtonProps {
     className?: string
 }
 
-const BugButton = ({ className }: BugButtonProps) => {
+const BugButton = () => {
     const [error, setError] = useState(false)
 
     const onError = () => { setError(true) }

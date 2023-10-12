@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { classNames } from 'app/shared/lib/classNames'
 import cls from './PageError.module.scss'
 import { useTranslation } from 'react-i18next'

@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next'
 import PageLoader from 'widgets/PageLoader/PageLoader'
 
 const AppRouter = () => {
-    const { t } = useTranslation()
     return (
         <Routes>
             {Object.values(routesConfig).map(({ path, element }) => (
