@@ -8,8 +8,7 @@ module.exports = {
         "standard-with-typescript",
         "plugin:i18next/recommended"
     ],
-    "overrides": [
-    ],
+    "overrides": [],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -33,9 +32,23 @@ module.exports = {
         "@typescript-eslint/naming-convention": 0,
         "no-useless-escape": 0,
         "@typescript-eslint/ban-types": 0,
-        "i18next/no-literal-string": [2, {markupOnly: true}]
+        "i18next/no-literal-string":
+            [2,
+                {
+                    markupOnly: true,
+                    "ignoreAttribute": ['data-testid']
+                }],
+        "@typescript-eslint/semi": 0
     },
     globals: {
         "__IS_DEV__": true
-    }
+    },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts/tsx}'],
+            rules: {
+                "i18next/no-literal-string": 0
+            }
+        }
+    ]
 }

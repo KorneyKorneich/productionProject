@@ -1,5 +1,5 @@
 import React from 'react'
-import { classNames } from 'app/shared/lib/classNames'
+import { classNames } from '../../lib/classNames/classNames'
 import cls from './Applink.module.scss'
 import { type ReactFC } from '../../../../config/build/types/childrenType'
 import { Link, type LinkProps } from 'react-router-dom'

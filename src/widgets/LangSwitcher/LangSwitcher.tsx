@@ -1,5 +1,5 @@
 import React from 'react'
-import { classNames } from 'app/shared/lib/classNames'
+import { classNames } from '../../shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'shared/ui'
 import { ThemeButton } from 'shared/ui/Button/Button'

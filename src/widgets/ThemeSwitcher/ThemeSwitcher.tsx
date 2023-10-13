@@ -1,5 +1,5 @@
 import React, { type FC } from 'react'
-import { classNames } from 'app/shared/lib/classNames'
+import { classNames } from '../../shared/lib/classNames/classNames'
 import cls from './ThemeSwitcher.module.scss'
 import { Themes, useTheme } from 'app/provider/ThemeProvider'
 import DarkIcon from 'shared/assets/icons/dark-theme-icon.svg'
