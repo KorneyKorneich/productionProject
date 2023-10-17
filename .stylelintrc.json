@@ -1,8 +1,11 @@
 {
   "extends": "stylelint-config-standard-scss",
   "rules": {
-    "indentation": [4],
-    "selector-class-pattern": null
-  }
+    "selector-class-pattern": null,
+    "declaration-property-value-no-unknown": true
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "scss"]
 }
 
