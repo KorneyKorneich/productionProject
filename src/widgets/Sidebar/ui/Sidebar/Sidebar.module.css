@@ -1,0 +1,61 @@
+.Sidebar {
+  height: calc(100vh - var(--navbar-height));
+  width: var(--sidebar-width);
+  background-color: var(--inverted-bg-color);
+  position: relative;
+  transition: width 0.3s;
+}
+
+.switchers {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  width: 100%;
+}
+
+.lang {
+  margin-left: 20px;
+}
+
+.link {
+  margin-top: 10px;
+  margin-left: 10px;
+  opacity: 1;
+}
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+}
+.collapsed .switchers {
+  display: flex;
+  flex-direction: column;
+}
+.collapsed .lang {
+  margin-left: 0;
+}
+.collapsed .link {
+  opacity: 0;
+  transition: 0.2s opacity;
+  width: 0;
+}
+
+.items {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.icon {
+  fill: var(--secondary-color);
+}
+
+.collapseBtn {
+  position: absolute;
+  bottom: 32px;
+  right: -32px;
+}
+
+/*# sourceMappingURL=Sidebar.module.css.map */
