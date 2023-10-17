@@ -1,6 +1,6 @@
 import React from 'react'
 import { classNames } from '../../lib/classNames/classNames'
-import cls from './Applink.module.scss'
+import cls from './AppLink.module.scss'
 import { type ReactFC } from '../../../../config/build/types/childrenType'
 import { Link, type LinkProps } from 'react-router-dom'
 
@@ -26,7 +26,6 @@ export const AppLink: ReactFC<AppLinkProps> = (props) => {
     return (
         <Link to={to} className={classNames(cls.AppLink, {}, [className, cls[theme]])}>
             {children}
-
         </Link>
     )
 }

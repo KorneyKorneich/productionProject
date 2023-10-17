@@ -6,13 +6,14 @@ module.exports = {
     "extends": [
         "plugin:react/recommended",
         "standard-with-typescript",
-        "plugin:i18next/recommended"
+        "plugin:i18next/recommended",
+        "plugin:storybook/recommended"
     ],
-    "overrides": [],
     "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+    parserOptions: {
+        parser: '@typescript-eslint/parser',
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
     },
     "plugins": [
         "react",
@@ -50,5 +51,6 @@ module.exports = {
                 "i18next/no-literal-string": 0
             }
         }
-    ]
+    ],
+
 }
