@@ -1,5 +1,4 @@
 name: building, linting, testing
-run-name:
 on:
   push:
     branches: [ main ]
@@ -11,7 +10,6 @@ jobs:
       matrix:
         node-version: [ 17.x ]
     runs-on: ${{ matrix.os }}
-
     steps:
       - uses: actions/checkout@v2
       - name: Starting Node.JS ${{ matrix.node-version }}
