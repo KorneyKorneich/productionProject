@@ -6,17 +6,20 @@ import { ThemeProvider } from 'app/provider/ThemeProvider'
 import 'shared/config/i18n/i18n'
 import { ErrorBoundary } from 'app/provider/ErrorBoundary'
 import 'app/style/index.scss'
+import { StoreProvider } from 'app/provider/StoreProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <ErrorBoundary>
-            <ThemeProvider>
-                <BrowserRouter>
-                    <App/>
-                </BrowserRouter>
-            </ThemeProvider>
-        </ErrorBoundary>
-    </React.StrictMode>
+    <StoreProvider>
+        <React.StrictMode>
+            <ErrorBoundary>
+                <ThemeProvider>
+                    <BrowserRouter>
+                        <App/>
+                    </BrowserRouter>
+                </ThemeProvider>
+            </ErrorBoundary>
+        </React.StrictMode>
+    </StoreProvider>
 )
 
 export default App

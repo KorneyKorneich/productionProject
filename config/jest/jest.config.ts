@@ -1,8 +1,3 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
-
 import type { Config } from 'jest'
 import path from 'path';
 
@@ -12,7 +7,7 @@ const config: Config = {
         '/node_modules/'
     ],
     moduleDirectories: [
-        'node_modules'
+        'node_modules', 'src'
     ],
     moduleFileExtensions: [
         'js',
@@ -36,6 +31,9 @@ const config: Config = {
     moduleNameMapper: {
         '\\.s?css': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
+    },
+    globals: {
+        __IS_DEV__: true
     }
 }
 
