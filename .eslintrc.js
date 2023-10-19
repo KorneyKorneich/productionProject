@@ -18,7 +18,8 @@ module.exports = {
     "plugins": [
         "react",
         "i18next",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "eslint-plugin-react-hooks"
     ],
     "rules": {
         '@typescript-eslint/prefer-nullish-coalescing': 0,
@@ -33,6 +34,8 @@ module.exports = {
         "@typescript-eslint/naming-convention": 0,
         "no-useless-escape": 0,
         "@typescript-eslint/ban-types": 0,
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "error",
         "i18next/no-literal-string":
             [2,
                 {
