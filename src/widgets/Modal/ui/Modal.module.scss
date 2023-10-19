@@ -25,18 +25,6 @@
   max-width: 60%;
 }
 
-.Modal.dark{
-  --bg-color: #121223;
-  --primary-color: #ec2fb9;
-  --inverted-bg-color: #d5d5d5;
-}
-
-.Modal.light{
-  --bg-color: #d5d5d5;
-  --primary-color: #1f91dc;
-  --inverted-primary-color: #ec2fb9;
-}
-
 .opened{
   opacity: 1;
   pointer-events: auto;

@@ -31,7 +31,7 @@ select {
   font: inherit;
 }
 
-.app.dark {
+.app_dark_theme {
   --bg-color: #121223;
   --inverted-bg-color: #d5d5d5;
   --primary-color: #ec2fb9;
@@ -40,7 +40,7 @@ select {
   --invrted-secondary-color: #069f7b;
 }
 
-.app.light {
+.app_light_theme {
   --bg-color: #d5d5d5;
   --inverted-bg-color: #121223;
   --primary-color: #1f91dc;
@@ -49,12 +49,13 @@ select {
   --inverted-secondary-color: #1e8383;
 }
 
-body {
+.app,
+.app_modal {
+  color: var(--primary-color);
   font: var(--font-m);
 }
 
 .app {
-  color: var(--primary-color);
   min-height: 100vh;
   background: var(--bg-color);
 }

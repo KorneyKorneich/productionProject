@@ -49,7 +49,7 @@
 }
 
 .icon {
-  fill: var(--secondary-color);
+  fill: var(--inverted-primary-color);
 }
 
 .collapseBtn {
