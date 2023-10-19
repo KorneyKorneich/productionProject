@@ -21,7 +21,6 @@ const Sidebar: FC = ({ className }: SidebarProps) => {
 
     const onToggle = () => {
         setCollapsed(prevState => !prevState)
-        console.log('switched')
     }
 
     return (
