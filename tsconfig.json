@@ -25,5 +25,6 @@
     "./src/**/*.tsx",
     "./**/*.ts",
     "./**/*.tsx",
+    "json-server/index.js"
   ]
 }

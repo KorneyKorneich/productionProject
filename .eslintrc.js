@@ -36,6 +36,7 @@ module.exports = {
         "@typescript-eslint/ban-types": 0,
         "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
         "react-hooks/exhaustive-deps": "error",
+        "@typescript-eslint/no-var-requires": 0,
         "i18next/no-literal-string":
             [2,
                 {
