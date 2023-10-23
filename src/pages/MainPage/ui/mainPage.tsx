@@ -4,7 +4,6 @@ import { Counter } from 'entities/Counter';
 
 const MainPage = () => {
     const { t } = useTranslation()
-
     return (
         <div>
             {t('Главная страница')}

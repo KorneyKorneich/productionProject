@@ -7,8 +7,9 @@ import { useTheme } from 'app/provider/ThemeProvider';
 interface ModalProps {
     className?: string
     children?: ReactNode
-    isOpen: boolean
-    onClose: () => void
+    isOpen?: boolean
+    onClose?: () => void
+    lazy?: boolean
 }
 
 const Modal = (props: ModalProps) => {
@@ -16,13 +17,25 @@ const Modal = (props: ModalProps) => {
         className,
         children,
         isOpen,
-        onClose
+        onClose,
+        lazy
     } = props;
 
-    const [isClosing, setIsClosing] = useState(false);
     const timeRef = useRef<ReturnType<typeof setTimeout>>();
     const ANIMATION_DELAY = 300;
     const { theme } = useTheme();
+
+    const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(isOpen);
+    }, [isOpen]);
+
+    const mods: Record<string, boolean> = {
+        [cls.opened]: isOpen,
+        [cls.isClosing]: isClosing
+    }
 
     const closeHandler = useCallback(() => {
         if (onClose) {
@@ -40,6 +53,10 @@ const Modal = (props: ModalProps) => {
         }
     }, [closeHandler]);
 
+    const onContentClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    }
+
     useEffect(() => {
         if (isOpen) {
             addEventListener('keydown', onKeyDown);
@@ -50,13 +67,8 @@ const Modal = (props: ModalProps) => {
         }
     }, [isOpen, onKeyDown]);
 
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    }
-
-    const mods: Record<string, boolean> = {
-        [cls.opened]: isOpen,
-        [cls.isClosing]: isClosing
+    if (lazy && !isMounted) {
+        return null
     }
     return (
         <Portal>
