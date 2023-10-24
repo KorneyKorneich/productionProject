@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import cls from './LoginForm.module.scss'
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -28,6 +28,12 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     const onLoginClick = useCallback(() => {
         dispatch(loginByUsername({ username, password }));
     }, [dispatch, password, username]);
+
+    useEffect(() => {
+        if (error) {
+            dispatch(loginActions.incorrectLogin());
+        }
+    }, [dispatch, error]);
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>

@@ -30,7 +30,11 @@ const Navbar = ({ className }: NavbarProps) => {
 
     if (authData) {
         return (
-            <Button onClick={onLogout} theme={ButtonTheme.CLEAR_INVERTED}>{t('Выйти')}</Button>
+            <div className={classNames(cls.Navbar, {}, [className])}>
+                <div className={cls.links}>
+                    <Button onClick={onLogout} theme={ButtonTheme.CLEAR_INVERTED}>{t('Выйти')}</Button>
+                </div>
+            </div>
         )
     }
     return (
