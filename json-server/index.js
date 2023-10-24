@@ -1,10 +1,15 @@
 const fs = require('fs');
-// const jwt = require('jsonwebtoken');
 const jsonServer = require('json-server');
 const path = require('path');
-const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
+
 const server = jsonServer.create();
 
+const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
+
+server.use(jsonServer.defaults({}));
+server.use(jsonServer.bodyParser);
+
+// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
 server.use(async (req, res, next) => {
     // eslint-disable-next-line
     await new Promise((res) => {
@@ -13,32 +18,39 @@ server.use(async (req, res, next) => {
     next();
 });
 
+// Эндпоинт для логина
+server.post('/login', (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+        const { users = [] } = db;
+
+        const userFromBd = users.find(
+            (user) => user.username === username && user.password === password
+        );
+
+        if (userFromBd) {
+            return res.json(userFromBd);
+        }
+
+        return res.status(403).json({ message: 'User not found' });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
+// проверяем, авторизован ли пользователь
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'User not found' });
+        return res.status(403).json({ message: 'AUTH ERROR' });
     }
     next();
 });
 
-server.use(jsonServer.defaults());
 server.use(router);
 
-server.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
-    const { users } = db;
-
-    const userFromDb = users.find(
-        (user) => user.username === username && user.password === password
-    );
-
-    if (userFromDb) {
-        return res.json(username)
-    }
-
-    return res.status(403).json({ message: 'User error' });
-})
-
+// запуск сервера
 server.listen(8000, () => {
     console.log('server is running on 8000 port');
-})
+});

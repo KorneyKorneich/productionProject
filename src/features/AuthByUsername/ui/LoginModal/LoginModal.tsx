@@ -1,6 +1,5 @@
 import React from 'react';
-// import cls from './LoginModal.module.scss'
-// import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import LoginForm from '../LoginForm/LoginForm';
 import Modal from 'widgets/Modal';
 
@@ -10,10 +9,10 @@ interface LoginModalProps {
     onClose: () => void
 }
 
-const LoginModal = ({ className, onClose, isOpen }: LoginModalProps) => {
+export const LoginModal = ({ className, onClose, isOpen }: LoginModalProps) => {
     return (
         <Modal
-            // className={classNames(cls.LoginModal, {}, [className])}
+            className={classNames('', {}, [className])}
             isOpen={isOpen}
             onClose={onClose}
             lazy
@@ -22,5 +21,3 @@ const LoginModal = ({ className, onClose, isOpen }: LoginModalProps) => {
         </Modal>
     );
 };
-
-export default LoginModal;
