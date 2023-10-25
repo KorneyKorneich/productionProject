@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import path from 'path';
+import * as path from 'path';
 
 export default {
     globals: {
@@ -23,7 +23,7 @@ export default {
         'node'
     ],
     moduleDirectories: [
-        'node_modules'
+        'node_modules', 'src'
     ],
     modulePaths: [
         '<rootDir>src'
@@ -36,7 +36,9 @@ export default {
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
-        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '^entities(.*)$': '<rootDir>/src/entities$1',
+        '^features(.*)$': '<rootDir>/src/features$1'
     }
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,

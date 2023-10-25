@@ -1,10 +1,10 @@
-import { type ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
-import i18nForTest from 'shared/config/i18n/i18nForTest';
+import { MemoryRouter } from 'react-router-dom';
+import { type DeepPartial } from '@reduxjs/toolkit';
 import { type StateSchema, StoreProvider } from 'app/provider/StoreProvider';
-import { type DeepPartial } from 'redux';
+import i18nForTest from 'shared/config/i18n/i18nForTest';
 
 export interface componentRenderOptions {
     route?: string

@@ -15,7 +15,7 @@ interface SidebarProps {
     className?: string
 }
 
-const Sidebar: FC = ({ className }: SidebarProps) => {
+export const Sidebar: FC = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const { t } = useTranslation();
 
@@ -70,5 +70,3 @@ const Sidebar: FC = ({ className }: SidebarProps) => {
         </div>
     )
 }
-
-export default Sidebar

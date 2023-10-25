@@ -17,6 +17,7 @@ export function buildPlugins ({ paths, isDev }: BuildConfig): webpack.WebpackPlu
             filename: 'css/[name].[contenthash:5].css',
             chunkFilename: 'css/[name].[contenthash:5].css'
         })
+
     ]
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());

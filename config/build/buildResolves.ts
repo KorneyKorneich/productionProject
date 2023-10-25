@@ -6,6 +6,8 @@ export function buildResolves (options: BuildConfig): ResolveOptions {
         preferAbsolute: true,
         modules: [options.paths.src, 'node_modules'],
         mainFiles: ['index'],
-        alias: {}
+        alias: {},
+        plugins: [
+        ]
     }
 }

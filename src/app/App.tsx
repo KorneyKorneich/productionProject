@@ -12,7 +12,7 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(userActions.initUsetAuth());
+        dispatch(userActions.initAuthData());
     }, [dispatch]);
 
     return (
