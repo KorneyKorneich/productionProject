@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuthData, userActions } from 'entities/User';
+import { getUserAuthData, userActions } from 'entities/User';
 
 interface NavbarProps {
     className?: string
@@ -15,7 +15,7 @@ interface NavbarProps {
 const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthOpen, setIsAuthOpen] = useState(false);
-    const authData = useSelector(getAuthData);
+    const authData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
 
     const onClose = useCallback(() => {
