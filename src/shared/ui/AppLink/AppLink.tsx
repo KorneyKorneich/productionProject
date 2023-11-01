@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { classNames } from '../../lib/classNames/classNames'
 import cls from './AppLink.module.scss'
 import { type ReactFC } from '../../../../config/build/types/childrenType'
@@ -16,7 +16,7 @@ interface AppLinkProps extends LinkProps {
 }
 
 // @ts-expect-error
-export const AppLink: ReactFC<AppLinkProps> = (props) => {
+export const AppLink: ReactFC<AppLinkProps> = memo((props) => {
     const {
         to,
         className,
@@ -28,4 +28,4 @@ export const AppLink: ReactFC<AppLinkProps> = (props) => {
             {children}
         </Link>
     )
-}
+})

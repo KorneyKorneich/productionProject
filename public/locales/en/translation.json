@@ -17,5 +17,7 @@
   "Пароль": "Password",
   "Введен неверный логин или пароль": "Incorrect login or password",
   "Форма авторизации": "Authorisation form",
-  "Выйти": "Log out"
+  "Выйти": "Log out",
+  "Вы ввели неверный логин или пароль": "Вы ввели неверный логин или пароль",
+  "Profile Page": "Profile Page"
 }

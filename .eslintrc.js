@@ -43,7 +43,8 @@ module.exports = {
                     markupOnly: true,
                     "ignoreAttribute": ['data-testid']
                 }],
-        "@typescript-eslint/semi": 0
+        "@typescript-eslint/semi": 0,
+        "react/display-name": 0
     },
     globals: {
         "__IS_DEV__": true
