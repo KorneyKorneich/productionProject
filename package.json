@@ -79,6 +79,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
+    "@types/webrtc": "^0.0.39",
     "axios": "^1.5.1",
     "cors": "^2.8.5",
     "i18next": "^23.5.1",

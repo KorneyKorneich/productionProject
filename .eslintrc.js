@@ -47,7 +47,8 @@ module.exports = {
         "react/display-name": 0
     },
     globals: {
-        "__IS_DEV__": true
+        "__IS_DEV__": true,
+        "__API__": true
     },
     overrides: [
         {

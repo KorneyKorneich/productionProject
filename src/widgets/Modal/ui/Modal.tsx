@@ -12,6 +12,8 @@ interface ModalProps {
     lazy?: boolean
 }
 
+export type Mods = Record<string, boolean | string | undefined>;
+
 const Modal = (props: ModalProps) => {
     const {
         className,
@@ -26,13 +28,13 @@ const Modal = (props: ModalProps) => {
     const { theme } = useTheme();
 
     const [isClosing, setIsClosing] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
+    const [isMounted, setIsMounted] = useState<boolean | undefined>(false);
 
     useEffect(() => {
         setIsMounted(isOpen);
     }, [isOpen]);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing
     }

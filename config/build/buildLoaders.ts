@@ -1,53 +1,56 @@
-import type webpack from 'webpack'
-import { type BuildConfig } from './types/config'
+import type webpack from 'webpack';
 import { buildCssLoader } from './loaders/buildCssLoader';
+import { type BuildOptions } from './types/config';
 
-export function buildLoaders (options: BuildConfig): webpack.RuleSetRule[] {
-    const pngLoader = {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-            {
-                loader: 'file-loader'
-            }
-        ]
-    }
-
+export function buildLoaders ({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     const svgLoader = {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
+        test: /\.svg$/,
         use: ['@svgr/webpack']
-    }
+    };
 
     const babelLoader = {
-        test: /\.m?js$/,
+        test: /\.(js|jsx|tsx)$/,
         exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env'],
                 plugins: [
-                    ['i18next-extract',
+                    [
+                        'i18next-extract',
                         {
-                            locales: ['en', 'ru']
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true
                         }
                     ]
                 ]
             }
         }
-    }
+    };
 
-    const sassLoaders = buildCssLoader(options.isDev);
+    const cssLoader = buildCssLoader(isDev);
 
-    const typescriptLoaders = {
+    // Если не используем тайпскрипт - нужен babel-loader
+    const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
-    }
+    };
+
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+        use: [
+            {
+                loader: 'file-loader'
+            }
+        ]
+    };
+
     return [
-        babelLoader,
-        typescriptLoaders,
-        sassLoaders,
+        fileLoader,
         svgLoader,
-        pngLoader
-    ]
+        babelLoader,
+        typescriptLoader,
+        cssLoader
+    ];
 }

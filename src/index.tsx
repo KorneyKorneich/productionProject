@@ -8,18 +8,21 @@ import { StoreProvider } from 'app/provider/StoreProvider';
 import { ErrorBoundary } from 'app/provider/ErrorBoundary';
 import { ThemeProvider } from 'app/provider/ThemeProvider';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <StoreProvider>
-        <React.StrictMode>
-            <ErrorBoundary>
-                <ThemeProvider>
-                    <BrowserRouter>
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = document.getElementById('root')!;
+
+ReactDOM.createRoot(root).render(
+    <BrowserRouter>
+        <StoreProvider>
+            <React.StrictMode>
+                <ErrorBoundary>
+                    <ThemeProvider>
                         <App/>
-                    </BrowserRouter>
-                </ThemeProvider>
-            </ErrorBoundary>
-        </React.StrictMode>
-    </StoreProvider>
+                    </ThemeProvider>
+                </ErrorBoundary>
+            </React.StrictMode>
+        </StoreProvider>
+    </BrowserRouter>
 )
 
 export default App
