@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type ProfileSchema, type ProfileType } from '../types/types';
 import { fetchProfileData } from 'entities/Profile';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const initialState: ProfileSchema = {
     readonly: true,
@@ -13,6 +14,19 @@ export const profileSlice = createSlice({
     name: 'profile',
     initialState,
     reducers: {
+        setReadonly: (state, action: PayloadAction<boolean>) => {
+            state.readonly = action.payload;
+        },
+        cancelEdit: (state) => {
+            state.readonly = true;
+            state.form = state.data;
+        },
+        updateProfile: (state, action: PayloadAction<ProfileType>) => {
+            state.form = {
+                ...state.form,
+                ...action.payload
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -23,8 +37,23 @@ export const profileSlice = createSlice({
             .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileType>) => {
                 state.isLoading = false;
                 state.data = action.payload;
+                state.form = action.payload;
+                state.readonly = true;
             })
             .addCase(fetchProfileData.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+            .addCase(updateProfileData.pending, (state) => {
+                state.isLoading = true;
+                state.error = undefined;
+            })
+            .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileType>) => {
+                state.isLoading = false;
+                state.data = action.payload;
+                state.form = action.payload;
+            })
+            .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             })

@@ -7,10 +7,12 @@
 }
 
 .input {
+  width: 100%;
   background: transparent;
   outline: none;
   border: none;
   caret-color: transparent;
+  color: var(--primary-color);
 
   &:focus{
     outline: none;
@@ -30,6 +32,10 @@
 .caretWrapper {
   flex-grow: 1;
   position: relative;
+}
+
+.readonly{
+  opacity: 0.5;
 }
 
 @keyframes blink {

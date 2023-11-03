@@ -1,9 +1,9 @@
 import ProfileCard from './ui/ProfileCard/ProfileCard';
 
-export type { ProfileType, ProfileSchema } from './model/types/types'
+export type { ProfileType, ProfileSchema } from 'pages/ProfilePage/model/types/types'
 
-export { profileReducer, profileActions } from './model/slice/profileSlice'
+export { profileReducer, profileActions } from 'pages/ProfilePage/model/slice/profileSlice'
 
-export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData'
+export { fetchProfileData } from 'pages/ProfilePage/model/services/fetchProfileData/fetchProfileData'
 
 export default ProfileCard
