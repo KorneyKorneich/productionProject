@@ -5,6 +5,7 @@ import { type AnyAction, type CombinedState, type EnhancedStore, type Reducer, t
 import { type ProfileSchema } from 'entities/Profile';
 import { type AxiosInstance } from 'axios';
 import { type NavigateFunction } from 'react-router';
+import { type ArticleDetailsSchema } from 'entities/Article';
 
 export interface StateSchema {
     counter: CounterSchema
@@ -13,6 +14,7 @@ export interface StateSchema {
     // async reducers
     loginForm?: LoginSchema
     profile?: ProfileSchema
+    articlesDetails?: ArticleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema;
