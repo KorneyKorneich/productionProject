@@ -12,12 +12,13 @@ import { getProfileReadonly } from 'pages/ProfilePage/model/selectors/getProfile
 import { getProfileForm } from 'pages/ProfilePage/model/selectors/getProfileForm/getProfileForm';
 import { type Currency } from 'entities/Currency';
 
-import { type Country } from 'entities/Country/model/types/country';
 import {
     getProfileValidateErrors
 } from 'pages/ProfilePage/model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import { ValidateProfileError } from '../model/types/types';
+import { useParams } from 'react-router-dom';
+import { type Country } from 'entities/Country';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
-import { ValidateProfileError } from 'pages/ProfilePage/model/types/types';
 
 interface ProfilePageProps {
     className?: string
@@ -35,7 +36,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const formData = useSelector(getProfileForm);
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsLoading);
-    const validateProfileErrors = useSelector(getProfileValidateErrors)
+    const validateProfileErrors = useSelector(getProfileValidateErrors);
+    const { id } = useParams<{ id: string }>()
 
     const validateProfileErrorsTranslate = {
         [ValidateProfileError.SERVER_ERROR]: t('Ошибка при сохранении данных'),
@@ -78,8 +80,10 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(fetchProfileData())
-    }, [dispatch]);
+        if (id) {
+            dispatch(fetchProfileData(id))
+        }
+    }, [dispatch, id]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

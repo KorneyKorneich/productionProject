@@ -1,21 +1,32 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { fetchProfileData } from './fetchProfileData';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import {
+    fetchCommentsByArticleId
+} from './fetchCommentsByArticleId';
 
 describe('fetchProfileData.test', () => {
-    const data = {
-        first: 'Никита',
-        lastname: 'Корнеев',
-        age: 19,
-        currency: Currency.RUB,
-        country: Country.Russia,
-        city: 'Moscow',
-        username: 'admin',
-        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg'
-    }
+    const data = [
+        {
+            articleId: '1',
+            userId: '1',
+            text: '11111',
+            id: '1g3j8XP'
+        },
+        {
+            articleId: '1',
+            userId: '1',
+            text: 'hello world',
+            id: 'PD026vy'
+        },
+        {
+            articleId: '1',
+            userId: '1',
+            text: 'hi',
+            id: '6TvYkj0'
+        }
+    ]
+
     test('success get data', async () => {
-        const thunk = new TestAsyncThunk(fetchProfileData);
+        const thunk = new TestAsyncThunk(fetchCommentsByArticleId);
         thunk.api.get.mockReturnValue(Promise.resolve({ data }));
         const result = await thunk.callFunc('1');
 
@@ -24,8 +35,8 @@ describe('fetchProfileData.test', () => {
         expect(result.payload).toEqual(data);
     });
 
-    test('error login', async () => {
-        const thunk = new TestAsyncThunk(fetchProfileData);
+    test('error fetching', async () => {
+        const thunk = new TestAsyncThunk(fetchCommentsByArticleId);
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
         const result = await thunk.callFunc('1');
 

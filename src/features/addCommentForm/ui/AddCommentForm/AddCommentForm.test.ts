@@ -1,4 +1,4 @@
-describe('ArticleDetailsPage.test', () => {
+describe('AddCommentForm.test', () => {
     test('', () => {
         // expect()
     });

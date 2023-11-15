@@ -24,7 +24,6 @@ const commentSlice = createSlice({
         entities: {}
     }),
     reducers: {
-
     },
     extraReducers: (builder) => {
         builder
